@@ -28,25 +28,22 @@ export class ContactStore {
     @observable
     contacts: Contact[] = [];
 
-    @observable
-    test = 'abc';
-
     constructor(private contactService: ContactsService) {}
 
     @action
-    fetchContacts() {
-        this.contactService.fetchList().toPromise().then(
-            (data) => {
-                if (data && data.length > 0) {
-                    data.forEach(d => {
-                        const contact = new Contact(d);
-                        this.contacts.push(contact);
-                    });
+    fetchContacts(pageNo) {
+        this.contactService.fetchList(pageNo)
+            .subscribe((data) => {
+                    if (data && data.length > 0) {
+                        data.forEach(d => {
+                            const contact = new Contact(d);
+                            this.contacts.push(contact);
+                        });
+                    }
+                },
+                (err) => {
+                    console.log(err);
                 }
-            },
-            (err) => {
-                console.log(err);
-            }
         );
     }
 
