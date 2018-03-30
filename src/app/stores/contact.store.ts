@@ -4,6 +4,7 @@ import {
     computed,
     action,
 } from 'mobx';
+import { ContactsService } from '../services/contacts.service';
 
 export interface Model {
     username: string;
@@ -30,12 +31,23 @@ export class ContactStore {
     @observable
     test = 'abc';
 
+    constructor(private contactService: ContactsService) {}
+
     @action
-    addContacts(contacts: Model[]) {
-        contacts.forEach(data => {
-            const contact = new Contact(data);
-            this.contacts.push(contact);
-        });
+    fetchContacts() {
+        this.contactService.fetchList().toPromise().then(
+            (data) => {
+                if (data && data.length > 0) {
+                    data.forEach(d => {
+                        const contact = new Contact(d);
+                        this.contacts.push(contact);
+                    });
+                }
+            },
+            (err) => {
+                console.log(err);
+            }
+        );
     }
 
     @computed

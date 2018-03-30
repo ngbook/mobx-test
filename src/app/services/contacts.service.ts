@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators/map';
 
 @Injectable()
 export class ContactsService {
@@ -10,6 +11,8 @@ export class ContactsService {
         return this.http.post(
             'https://api.ngbook.techzto.com/people',
             {start, pageSize}
+        ).pipe(
+            map((data: any) => data.data && data.data.list || [])
         );
     }
 }

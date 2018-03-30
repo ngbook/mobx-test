@@ -20,11 +20,6 @@ export class AppComponent implements OnInit {
     constructor(public store: ContactStore) { }
 
     ngOnInit() {
-        interval(1000).pipe(take(5)).subscribe(d => {
-            this.store.addContacts([{
-                username: 'hello' + d,
-                avatar: 'xxx' + d,
-            }]);
-        });
+        this.store.fetchContacts();
     }
 }
