@@ -3,6 +3,7 @@ import {
     observable,
     computed,
     action,
+    runInAction,
 } from 'mobx';
 import { ContactsService } from '../services/contacts.service';
 
@@ -34,16 +35,18 @@ export class ContactStore {
     fetchContacts(pageNo) {
         this.contactService.fetchList(pageNo)
             .subscribe((data) => {
-                    if (data && data.length > 0) {
+                if (data && data.length > 0) {
+                    runInAction(() => {
                         data.forEach(d => {
                             const contact = new Contact(d);
                             this.contacts.push(contact);
                         });
-                    }
-                },
-                (err) => {
-                    console.log(err);
+                    });
                 }
+            },
+            (err) => {
+                console.log(err);
+            }
         );
     }
 
