@@ -3,7 +3,6 @@ import {
     OnInit,
     ChangeDetectionStrategy
 } from '@angular/core';
-import { reaction } from 'mobx';
 
 import { MsgStore, Msg } from '../stores/msg.store';
 import { ContactStore } from '../stores/contact.store';
@@ -21,21 +20,6 @@ export class MsgComponent implements OnInit {
         public contactStore: ContactStore) { }
 
     ngOnInit() {
-        // side effects
-        let msgsLen = this.msgStore.msgs.length;
-        reaction(
-            () => this.msgStore.msgs.filter(msg => !msg.type).length,
-            (curLen) => {
-            if (msgsLen < curLen) {
-                msgsLen = curLen;
-                this.msgStore.msgs.push(new Msg({
-                    content: 'ok',
-                    time: new Date().toLocaleString(),
-                    sender: this.contactStore.receiver,
-                    type: 1,
-                }));
-            }
-        });
     }
 
     sendMsg() {
