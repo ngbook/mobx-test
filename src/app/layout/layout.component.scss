@@ -1,0 +1,13 @@
+@import '../common.scss';
+.layout {
+    display: flex;
+    margin: 10px auto;
+    background: #2e3238;
+    width: #{$msg-width + $contacts-width};
+    border-radius: 4px;
+    overflow: hidden;
+    .left-container {
+        height: $win-height;
+        overflow-y: auto;
+    }
+}

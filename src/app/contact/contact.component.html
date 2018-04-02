@@ -1,0 +1,17 @@
+<div class="users-wrap" *mobxAutorun>
+    <h2 class="title">联系人列表</h2>
+    <ul class="contacts">
+        <li *ngFor="let contact of store.contacts"
+            class="contact" (click)="selectContact(contact)"
+            [class.selected]="contact === store.receiver">
+            <div class="img-wrap">
+                <img src="{{contact.avatar}}" alt="{{contact.username}}" class="avatar">
+            </div>
+            <div class="txt-wrap">
+                <h3 class="username">{{contact.nickname}}</h3>
+                <p class="desc">{{contact.username}}-{{contact.tel}}</p>
+            </div>
+        </li>
+    </ul>
+    <div *ngIf="store.total <= 0" class="loading">加载中...</div>
+</div>

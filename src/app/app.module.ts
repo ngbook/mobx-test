@@ -1,24 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MobxAngularModule } from 'mobx-angular';
 
 import { AppComponent } from './app.component';
-import { ContactStore } from './stores/contact.store';
-import { HttpClientModule } from '@angular/common/http';
-import { ContactsService } from './services/contacts.service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     imports: [
         BrowserModule,
-        MobxAngularModule,
-        HttpClientModule,
+        AppRoutingModule,
     ],
     providers: [
-        ContactStore,
-        ContactsService,
     ],
     bootstrap: [AppComponent]
 })

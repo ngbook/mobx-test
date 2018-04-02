@@ -1,0 +1,51 @@
+@import '../common.scss';
+.users-wrap {
+    width: $contacts-width;
+    background: #2e3238;
+    .title {
+        padding: 10px;
+        margin: 0;
+        text-align: center;
+        font-size: 20px;
+        color: #ccc;
+    }
+    .contacts {
+        padding-left: 0;
+        margin-top: 0;
+        .contact {
+            display: flex;
+            border-top: 1px #333 solid;
+            padding: 10px 5px 3px 20px;
+            cursor: pointer;
+            &:hover {
+                background: #52575e;
+            }
+            &.selected {
+                background: #3b3d3f;
+            }
+            .avatar {
+                width: $avatar-size;
+                height: $avatar-size;
+                border-radius: $avatar-size;
+            }
+            .txt-wrap {
+                margin: 0 10px;
+                line-height: #{$avatar-size/2};
+                .username {
+                    margin: 0;
+                    color: #fff;
+                    font-size: 16px;
+                }
+                .desc {
+                    margin: 0;
+                    font-size: 12px;
+                    color: #ccc;
+                }
+            }
+        }
+    }
+    .loading {
+        text-align: center;
+        color: #ccc;
+    }
+}

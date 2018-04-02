@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: url(http://res.wx.qq.com/a/wx_fed/webwx/res/static/img/2zrdI1g.jpg) no-repeat;
+}
+ul {
+    padding-left: 0;
+}
+li {
+    list-style: none;
+}

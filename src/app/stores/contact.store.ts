@@ -19,6 +19,12 @@ export class Contact {
     @observable
     avatar: string;
 
+    @observable
+    tel: string;
+
+    @observable
+    nickname: string;
+
     constructor(inits: Model) {
         Object.assign(this, inits);
     }
@@ -29,10 +35,13 @@ export class ContactStore {
     @observable
     contacts: Contact[] = [];
 
+    @observable
+    receiver: Contact = null;
+
     constructor(private contactService: ContactsService) {}
 
     @action
-    fetchContacts(pageNo) {
+    fetchContacts(pageNo = 0) {
         this.contactService.fetchList(pageNo)
             .subscribe((data) => {
                 if (data && data.length > 0) {
@@ -41,6 +50,9 @@ export class ContactStore {
                             const contact = new Contact(d);
                             this.contacts.push(contact);
                         });
+                        if (!this.receiver) {
+                            this.receiver = this.contacts[0];
+                        }
                     });
                 }
             },
@@ -48,6 +60,11 @@ export class ContactStore {
                 console.log(err);
             }
         );
+    }
+
+    @action
+    changeReceiver(contact: Contact) {
+        this.receiver = contact;
     }
 
     @computed

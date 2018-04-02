@@ -1,0 +1,89 @@
+@import '../common.scss';
+.chat-wrap {
+    border-left: 1px #ccc solid;
+    width: $msg-width;
+    background: #eeeeee;
+    .msg-wrap {
+        height: #{$win-height - $sender-height - $toolbar-height};
+        border: 0;
+        border-bottom: 1px #ccc solid;
+        .msg-header {
+            height: $msg-header-height;
+            line-height: $msg-header-height;
+            text-align: center;
+            border-bottom: 1px #ccc solid;
+            h3 {
+                margin: 0;
+            }
+        }
+        .msg-list {
+            padding: 0 20px 10px;
+            margin: 0;
+            height: #{$win-height - $sender-height - $toolbar-height - $msg-header-height - 10px};
+            overflow-y: auto;
+            .msg {
+                margin: 10px auto;
+                .imgs {
+                    .header {
+                        height: 40px;
+                        width: 40px;
+                        border-radius: 40px;
+                        float: left;
+                        margin: 0 10px;
+                    }
+                }
+                .time {
+                    color: #888;
+                    font-size: 12px;
+                }
+                .msg-text {
+                    color: #555;
+                    font-size: 18px;
+                    .bubble {
+                        margin-top: 5px;
+                        padding: 5px 20px;
+                        background: #fff;
+                        display: inline-block;
+                        border-radius: 4px;
+                        text-align: left;
+                    }
+                }
+                &.me {
+                    text-align: right;
+                    .imgs {
+                        .header {
+                            float: right;
+                        }
+                    }
+                    .msg-text .bubble {
+                        background: #bde08c;
+                    }
+                }
+            }
+        }
+    }
+    .toolbar-wrap {
+        height: $toolbar-height;
+        .send-btn {
+            float: right;
+            margin: 0 10px;
+            line-height: $toolbar-height;
+        }
+    }
+    .input-wrap {
+        height: $sender-height;
+        border-top: 1px #ccc solid;
+        .msg-box {
+            height: #{$sender-height - 10};
+            width: #{$msg-width - 10};
+            border: 0;
+            -webkit-appearance: none;
+            resize: none;
+            outline: none;
+            padding: 10px;
+            font-size: 18px;
+            color: #888;
+            background: #eeeeee;
+        }
+    }
+}

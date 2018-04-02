@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators/map';
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 20;
 
 @Injectable()
 export class ContactsService {
